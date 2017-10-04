@@ -18,7 +18,7 @@ function currency (value, currency, decimals) {
     : stringified
   var i = _int.length % 3
   var head = i > 0
-    ? (_int.slice(0, i) + (_int.length > 3 ? ',' : ''))
+    ? (_int.slice(0, i) + (_int.length > 3 ? '.' : ''))
     : ''
   var _float = decimals
     ? stringified.slice(-1 - decimals)
@@ -26,6 +26,7 @@ function currency (value, currency, decimals) {
   var sign = value < 0 ? '-' : ''
   return sign + currency + head +
     _int.slice(i).replace(digitsRE, '$1,') +
+    '.' +
     _float
 }
 
